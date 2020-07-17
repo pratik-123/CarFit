@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Tasks" representedClassName="Tasks" syncable="YES">
+        <attribute name="createDateUtc" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isTemplate" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="lastUpdateDateUtc" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="paymentTypeId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="price" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="taskId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="timesInMinutes" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="belongsToVisit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Visits" inverseName="hasTasks" inverseEntity="Visits"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="taskId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Visits" representedClassName="Visits" syncable="YES">
+        <attribute name="endTimeUtc" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="expectedTime" optional="YES" attributeType="String"/>
+        <attribute name="homeBobEmployeeId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="houseOwnerAddress" optional="YES" attributeType="String"/>
+        <attribute name="houseOwnerCity" optional="YES" attributeType="String"/>
+        <attribute name="houseOwnerFirstName" optional="YES" attributeType="String"/>
+        <attribute name="houseOwnerId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="houseOwnerLastName" optional="YES" attributeType="String"/>
+        <attribute name="houseOwnerLatitude" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="houseOwnerLongitude" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="houseOwnerMobilePhone" optional="YES" attributeType="String"/>
+        <attribute name="houseOwnerZip" optional="YES" attributeType="String"/>
+        <attribute name="isBlocked" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
+        <attribute name="isFirstVisit" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="isManual" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="isReviewed" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="isSubscriber" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="professional" optional="YES" attributeType="String"/>
+        <attribute name="startTimeUtc" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="stateOrder" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="visitId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="visitState" optional="YES" attributeType="String"/>
+        <relationship name="hasTasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tasks" inverseName="belongsToVisit" inverseEntity="Tasks"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="visitId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="Visits" positionX="-63" positionY="-18" width="128" height="403"/>
+        <element name="Tasks" positionX="-54" positionY="144" width="128" height="178"/>
+    </elements>
+</model>
